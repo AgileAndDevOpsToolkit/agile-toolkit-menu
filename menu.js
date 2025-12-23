@@ -5,7 +5,7 @@
     position: { top: 16, left: 16 },
     maxHeight: 360,
     zIndex: 99999,
-    title: "Agile Toolkit",
+    title: "Tous les outils Agile Toolkit",
   };
 
   const tools = Array.isArray(window.AGILE_TOOLKIT_TOOLS) ? window.AGILE_TOOLKIT_TOOLS : [];
