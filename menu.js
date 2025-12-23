@@ -168,7 +168,21 @@
       a.href = t.url;
       a.textContent = t.title;
       a.setAttribute("role", "menuitem");
-      a.target = t.url.startsWith(location.origin) ? "_self" : "_self";
+
+      // Open ONLY YouTube in a new tab
+      let isYouTube = false;
+      try {
+        const u = new URL(t.url, location.href);
+        isYouTube = /(^|\.)youtube\.com$/i.test(u.hostname) || /^youtu\.be$/i.test(u.hostname);
+      } catch {}
+
+      if (isYouTube) {
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+      } else {
+        a.target = "_self";
+      }
+
       // Active state (simple)
       try {
         const tu = new URL(t.url, location.href).toString();
